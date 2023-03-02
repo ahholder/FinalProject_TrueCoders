@@ -18,5 +18,12 @@ namespace Testing.Controllers
 
             return View(products);
         }
+        public IActionResult ViewProduct(int id)
+        {
+            var product = repo.GetProduct(id);
+
+            return View(product);
+        }
+        //View EmptyRazor must be the same name as the method in the controller
     }
 }
