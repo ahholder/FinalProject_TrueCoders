@@ -43,5 +43,17 @@ namespace Testing.Controllers
             return RedirectToAction("ViewProduct", new { id = product.ProductID });
         }
         //View EmptyRazor must be the same name as the method in the controller
+        public IActionResult InsertProduct()
+        {
+            var prod = repo.AssignCategory();
+
+            return View(prod);
+        }
+        public IActionResult InsertProductToDatabase(Product productToInsert)
+        {
+            repo.InsertProduct(productToInsert);
+
+            return RedirectToAction("Index");
+        }
     }
 }
