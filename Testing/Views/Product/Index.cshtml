@@ -1,30 +1,42 @@
 ﻿@model IEnumerable<Product>
 
-<h2>Products</h2>
+<style>
+    body {
+        background-color: #D3D1B0
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Character Archive</h1>
+    <p>Search and add to a list of character concepts to use in your novels and <a href="https://en.wikipedia.org/wiki/Tabletop_role-playing_game">tabletop RPGs</a>!</p>
+    <p>Original list by Alex Holder</p>
+</div>
 
 <div style="display: block">
-    <a href="/Product/InsertProduct/">Create a New Product</a>
+    <a href="/Product/InsertProduct/">Create New Character</a>
 </div>
 
 <table class="table">
     <tr>
-        <th>ID</th>
+        <th>#</th>
         <th>Name</th>
-        <th>Price</th>
-        <th>Category ID</th>
-        <th>On Sale</th>
-        <th>Stock Level</th>
+        <th>Sex</th>
+        <th>Age</th>
+        <th>Heritage</th>
+        <th>Archetype</th>
+        <th>Bio</th>
     </tr>
 
     @foreach (var product in Model)
     {
         <tr>
-            <td><a href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
-            <td>@product.Name</td>
-            <td>@product.Price</td>
-            <td>@product.CategoryID</td>
-            <td>@product.OnSale</td>
-            <td>@product.StockLevel</td>
+            <td><a href=/Product/ViewProduct/@product.id>@product.id</a></td>
+            <td>@product.name</td>
+            <td>@product.DisplayGender(product.sexid)</td>
+            <td>@product.age</td>
+            <td>@product.DisplayHeritage(product.raceid)</td>
+            <td>@product.DisplayArchetype(product.classid)</td>
+            <td>@product.bio</td>
         </tr>
 
     }

@@ -11,8 +11,11 @@ namespace Testing
         public Product GetProduct(int id);
         public void UpdateProduct(Product product);
         public void InsertProduct(Product productToInsert);
-        public IEnumerable<Category> GetCategories();
-        public Product AssignCategory();
+        public IEnumerable<Sex> GetSexes();
+        public IEnumerable<Heritage> GetRaces();
+        public IEnumerable<Archetype> GetJobs();
+        public Product AssignList();
         public void DeleteProduct(Product product);
+        public void OrganizeProduct(Product product);
     }
 }

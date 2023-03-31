@@ -1,19 +1,93 @@
 ﻿@model Product
 
-<h2>Update @Model.Name</h2>
+<h2>Updating Character: @Model.name</h2>
+
+<style>
+    body {
+        background-color: #D3D1B0
+    }
+</style>
 
 @using (Html.BeginForm("UpdateProductToDatabase", "Product", "Post"))
 {
-    <input asp-for="ProductID" type="hidden" value="@Model.ProductID" />
+    <input asp-for="id" type="hidden" value="@Model.id" />
 
-    <label asp-for="Name" class="control-label">Name</label>
+    <label asp-for="name" class="control-label">Name</label>
 
-    <input type="text" name="Name" class="form-control" value="@Model.Name" />
+    <input type="text" name="Name" class="form-control" value="@Model.name" />
 
-    <label asp-for="Price" class="control-label">Price</label>
+    <label asp-for="age" class="control-label">Age</label>
 
-    <input type="number" step="0.01" name="Price" class="form-control" value="@Model.Price" />
+    <input type="number" step="0.01" name="Age" class="form-control" value="@Model.age" />
 
-    <input type="submit" value="Update Product" class="btn btn-primary" />
+    <!--<label asp-for="sex" class="control-label">Sex</label>-->
+
+    <div class="form-group">
+        <label for="">Select a Gender</label>
+        <select class="form-control" name="sexid" value="@Model.sexid">
+            @for (var i = 0; i < 3; i++) //Replace >Select a Category< with display text
+            {
+                @if (i != Model.sexid) {
+                    <option value=@i>@i @Model.DisplayGender(i)</option>
+                } else {
+                    <option value=@i selected>@i @Model.DisplayGender(i)</option>
+                }
+            }
+        </select>
+    </div>
+
+    <!--<label asp-for="heritage" class="control-label">Heritage</label>-->
+
+    <div class="form-group">
+        <label for="">Select a Heritage</label>
+        <select class="form-control" name="raceid" value="@Model.raceid">
+            @for (var i = 0; i < 7; i++) //Replace >Select a Category< with display text
+            {
+                @if (i != Model.raceid)
+                {
+                    <option value=@i>@i @Model.DisplayHeritage(i)</option>
+                } else
+                {
+                    <option value=@i selected>@i @Model.DisplayHeritage(i)</option>
+                }
+            }
+        </select>
+    </div>
+
+    <!--<label asp-for="archetype" class="control-label">Archetype</label>-->
+
+    <div class="form-group">
+        <label for="">Select an Archetype</label>
+        <select class="form-control" name="classid" value="">
+            @for (var i = 0; i < 11; i++) //Replace >Select a Category< with display text
+            {
+                @if (i != Model.classid)
+                {
+                    <option value=@i>@i @Model.DisplayArchetype(i)</option>
+                } else
+                {
+                    <option value=@i selected>@i @Model.DisplayArchetype(i)</option>
+                }
+            }
+        </select>
+    </div>
+
+    <label asp-for="archetype" class="control-label">Brief Description</label>
+
+    <input type="text" name="Bio" class="form-control" value="@Model.bio" />
+
+    <input type="submit" value="Update Character" class="btn btn-primary" />
 
 }
+
+
+<html>
+    <body>
+        <br />
+        <br />
+    </body>
+    </html>
+
+    <div style="display: block">
+        <a href="/Product/Index">Return to List</a>
+</div>

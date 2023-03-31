@@ -1,20 +1,59 @@
 ﻿@model Product
-<h2>Create a New Product</h2>
+
+<style>
+    body {
+        background-color: #D3D1B0
+    }
+</style>
+
+<h2>Create New Character</h2>
 @using (Html.BeginForm("InsertProductToDatabase", "Product", "Post"))
 {
-    <input asp-for="ProductID" type="hidden" value="" />
-    <label asp-for="Name" class="control-label">Name</label>
+    <input asp-for="id" type="hidden" value="" />
+    <label asp-for="name" class="control-label">Name</label> //Replace >Name< with display text
     <input type="text" name="Name" class="form-control" value="" />
-    <label asp-for="Price" class="control-label">Price</label>
-    <input type="number" step="0.01" name="Price" class="form-control" />
+    <label asp-for="age" class="control-label">Age</label> //Replace >Name< with display text
+    <input type="number" step="1" name="Age" class="form-control" />
     <div class="form-group">
-        <label for="">Select a Category</label>
-        <select class="form-control" name="CategoryID" value="">
-            @foreach (var cat in Model.Categories)
+        <label for="">Select a Gender</label>
+        <select class="form-control" name="sexid" value="">
+            @foreach (var cat in Model.sex) //Replace >Select a Category< with display text
             {
-                <option value="@cat.CategoryID">@cat.CategoryID @cat.Name</option>
+                <option value="@cat.sexid">@cat.sexid @cat.gender</option>
             }
         </select>
     </div>
-    <input type="submit" value="Create Product" class="btn btn-primary" />
+    <div class="form-group">
+        <label for="">Select a Heritage</label>
+        <select class="form-control" name="raceid" value="">
+            @foreach (var cat2 in Model.heritage) //Replace >Select a Category< with display text
+            {
+                <option value="@cat2.raceid">@cat2.raceid @cat2.race</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="">Select an Archetype</label>
+        <select class="form-control" name="classid" value="">
+            @foreach (var cat3 in Model.archetype) //Replace >Select a Category< with display text
+            {
+                <option value="@cat3.classid">@cat3.classid @cat3.job</option>
+            }
+        </select>
+    </div>
+    <label asp-for="bio" class="control-label">Write a Brief Description</label> //Replace >Name< with display text
+    <input type="text" name="Bio" class="form-control" value="" />
+    <input type="submit" value="Create New Character" class="btn btn-primary" />
+
+
+    <html>
+    <body>
+        <br />
+        <br />
+    </body>
+    </html>
+
+    <div style="display: block">
+        <a href="/Product/Index">Return to List</a>
+    </div>
 }

@@ -54,7 +54,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IDbConnection>((s) =>
 {
-    IDbConnection conn = new MySqlConnection(builder.Configuration.GetConnectionString("bestbuy"));
+    IDbConnection conn = new MySqlConnection(builder.Configuration.GetConnectionString("ah_tc_final"));
     conn.Open();
     return conn;
 
@@ -81,7 +81,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Product}/{action=Index}/{id?}"); //Change {Controller=Home} to set default page
 
 app.Run();
 
