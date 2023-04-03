@@ -1,12 +1,16 @@
 ﻿@model Product
 
-<h3>@Model.name Information</h3>
 
 <style>
     body {
         background-color: #D3D1B0
     }
 </style>
+
+<div class="text-center">
+    <img src=@Model.VisualAid(Model.classid) alt=" " width="150" height="150">
+    <h3>@Model.name's Information</h3>
+</div>
 
 <table class="table">
     <tr>
